@@ -11,7 +11,7 @@ import java.util.*;
 public class Sort01{
 	int a[];
 	/*
-	*Ñ¡ÔñÅÅÐò
+	*é€‰æ‹©æŽ’åº
 	*
 	*/
 	public void selection(){
@@ -29,10 +29,86 @@ public class Sort01{
 		}
 	}
 	/**
-	*²åÈëÅÅÐò
+	*æ’å…¥æŽ’åº
 	*
 	*/
-	public void insertion(){}
+	public void insertion(){
+		for(int i=a.length-1;i>0;i--){
+			if(a[i-1]>a[i]){
+				swap(a,i-1,i);
+			}
+		}
+		for(int i=2;i<a.length;i++){
+			int temp=a[i];
+			int j=i;
+			while(temp<a[j-1]){
+				a[j]=a[j-1];
+				j--;
+			}
+			a[j]=temp;
+		}
+	}
+	/**
+	*å†’æ³¡æŽ’åº
+	*/
+	public void bubble(){
+		for(int i=0;i<a.length-1;i++){
+			for(int j=a.length-1;j>i;j--){
+				if(a[j]<a[j-1]){
+					swap(a,j,j-1);
+				}
+			}
+		}
+	}
+	/**
+	*å¸Œå°”æŽ’åº
+	*/
+	
+	public void shell(){
+		int h=1;
+		for(;h<=(a.length-2)/9;h=h*3+1);
+		for(;h>0;h/=3){
+			for(int i=h;i<a.length;i++){
+				int j=i;
+				int temp=a[i];
+				while(j>=h&&temp<a[j-h]){
+					swap(a,j,j-h);
+					j-=h;
+				}
+				a[j]=temp;
+			}
+		}
+	}
+	/**
+	*å¿«é€ŸæŽ’åº
+	*/
+	public void quicksort(){
+		
+		quick(a,0,a.length-1);
+		
+	}
+	private void quick(int[] a,int l,int r){
+		if(r<=l)return;
+		
+		int i=partiton(a,l,r);
+		quick(a,l,i-1);
+		quick(a,i+1,r);
+	}
+	private int partiton(int[]a,int l,int r){
+		int i=l-1;
+		int j=r;
+		int temp=a[r];
+		for(;;){
+			while(a[++i]<temp);
+			while(temp<a[--j])if(j==l)break;
+				
+			if(i>=j)break;
+			swap(a,i,j);
+		}
+		swap(a,i,r);
+		return i;
+		
+	}
 	private void swap(int a[],int i,int j){
 		int temp=a[i];
 		a[i]=a[j];
