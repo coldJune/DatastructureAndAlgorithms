@@ -115,4 +115,38 @@ public class ArrayList implements List {
         }
         items = newItems;
     }
+
+    public void union(List lb) {
+        for(int i = 0; i<lb.length();i++){
+            if(this.indexOf(lb.get(i)) == -1){
+                this.insert(size,lb.get(i));
+            }
+        }
+    }
+
+    public ArrayList merge(List lb) {
+        ArrayList newList = new ArrayList();
+        int length = lb.length();
+        int i,j;
+        for( i = size-1,j = length-1;i>=0 && j>=0;){
+            if((Integer)items[i]<(Integer) lb.get(j)){
+                newList.insert(0,lb.get(j));
+                j--;
+            }else{
+                newList.insert(0,items[i]);
+                i--;
+            }
+        }
+        if (i < 0 && j >= 0){
+            for(int k=j;k>=0;k--){
+                newList.insert(0,lb.get(k));
+            }
+        }
+        if(i >= 0 ){
+            for(int k=i;k>=0;k--){
+                newList.insert(0,items[k]);
+            }
+        }
+        return newList;
+    }
 }
