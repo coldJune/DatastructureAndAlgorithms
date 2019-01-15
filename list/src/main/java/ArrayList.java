@@ -1,12 +1,12 @@
 public class ArrayList implements List {
     //线性表的大小
-    private int size;
+    protected int size;
     //线性表的最大长度
-    private int maxLen;
+    protected int maxLen;
     //线性表的元素集合
-    private Object[] items;
+    protected Object[] items;
     //线性表的默认长度
-    private static final int DEFAULT_LENGTH = 3;
+    protected static final int DEFAULT_LENGTH = 3;
 
     ArrayList(){
         this.size = 0;
@@ -105,7 +105,7 @@ public class ArrayList implements List {
         }
     }
 
-    private void expand(){
+    protected void expand(){
         maxLen = 2*maxLen;
         Object[] newItems = new Object[maxLen];
         int i = 0;
