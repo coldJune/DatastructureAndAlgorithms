@@ -1,7 +1,5 @@
 import junit.framework.TestCase;
 
-import java.util.Scanner;
-
 public class StackTest extends TestCase {
     public StackTest(String testName){
         super(testName);

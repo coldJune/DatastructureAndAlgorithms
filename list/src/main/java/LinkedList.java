@@ -1,6 +1,6 @@
 public class LinkedList implements List {
-    private Node head;
-    private int size;
+    protected Node head;
+    protected int size;
     LinkedList(){
         head = new Node(null,null);
         size = 0;
