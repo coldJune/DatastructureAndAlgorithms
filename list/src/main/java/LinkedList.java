@@ -106,9 +106,41 @@ public class LinkedList implements List {
     }
 
     public void union(List lb) {
+        Node pa = head;
+        Node pb = ((LinkedList)lb).getHead().next;
+        Node pc;
+        while(pb!=null){
+            if(this.indexOf(pb.data)==-1){
+                pc = pb.next;
+                pb.next = pa.next;
+                pa.next = pb;
+                pb = pc;
+                pa = pa.next;
+                size++;
+            }else{
+                pb = pb.next;
+            }
+        }
     }
 
     public List merge(List lb) {
+        Node pa = head.next;
+        Node pb = ((LinkedList)lb).getHead().next;
+        Node pc = head;
+        while(pa !=null && pb !=null){
+            if((Integer)pa.data <= (Integer)pb.data){
+                pc.next = pa;
+                pc = pa;
+                pa = pa.next;
+                size++;
+            }else{
+                pc.next = pb;
+                pc = pb;
+                pb = pb.next;
+            }
+        }
+
+        pc.next = pa!=null?pa:pb;
         return null;
     }
 }
