@@ -190,5 +190,24 @@ public class ListTest extends TestCase {
         list3.merge(list4);
         list3.display();
     }
+
+    //实现LRU缓存算法（最近最少使用算法）
+    public void testLRU(){
+        List lru = new LinkedList();
+        for (int i = 0;i <20;i++){
+            int rand = (int)(Math.random() * 5);
+            int index = lru.indexOf(rand);
+            System.out.println("rand:"+rand);
+            if(index!=-1){
+                lru.delete(index);
+            }
+            if(lru.length()==5){
+                lru.delete(lru.length());
+            }
+            lru.insert(0,rand);
+            lru.display();
+
+        }
+    }
 }
 
