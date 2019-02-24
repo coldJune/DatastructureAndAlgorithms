@@ -58,4 +58,17 @@ public class StackTest extends TestCase {
         }
 
     }
+    //浏览器前进后退
+    public void testPreAndBack(){
+        Stack back = new Stack();
+        Stack pre = new Stack();
+        back.push(1);
+        back.push(2);
+        back.push(3);
+        pre.push(back.pop());
+        pre.push(back.pop());
+        back.display();
+        System.out.println();
+        pre.display();
+    }
 }
