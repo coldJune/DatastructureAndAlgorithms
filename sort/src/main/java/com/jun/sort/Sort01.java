@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Sort01{
 	int a[];
-	/*
+	/**
 	*选择排序
 	*
 	*/
@@ -87,6 +87,47 @@ public class Sort01{
 		quick(a,0,a.length-1);
 		
 	}
+
+	public void mergeSort(){
+		mergeS(a, 0, a.length-1);
+
+	}
+	private void mergeS(int[] a, int low, int high){
+		if(low >= high){
+			return;
+		}
+		int mid = low + (high - low)/2;
+		mergeS(a, low, mid);
+		mergeS(a, mid+1, high);
+		merge(a, low, mid, high);
+	}
+
+	private void merge(int[] a, int low, int mid, int high){
+		int[] temp = new int[high-low+1];
+		int i = low;
+		int j = mid+1;
+		int k = 0;
+		while(i<=mid && j<=high){
+			if(a[i]<=a[j]){
+				temp[k++] = a[i++];
+			}else{
+				temp[k++] = a[j++];
+			}
+		}
+		//判断哪个还有剩余
+		int start = i;
+		int end = mid;
+		if(j<=high){
+			start = j;
+			end = high;
+		}
+		while(start<=end){
+			temp[k++]=a[start++];
+		}
+		for(i = 0;i <= high-low; ++i){
+			a[low+i] = temp[i];
+		}
+	}
 	private void quick(int[] a,int l,int r){
 		if(r<=l)return;
 		
@@ -125,5 +166,6 @@ public class Sort01{
 		for(int i=0;i<a.length;i++){
 			System.out.print(a[i]+"  ");
 		}
+		System.out.println();
 	}
 }

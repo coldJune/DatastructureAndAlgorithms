@@ -61,4 +61,12 @@ public class SortTest extends TestCase{
 		ss.print();
 		System.out.println();
 	}
+
+	public void testMerge(){
+		Sort01 sort = new Sort01();
+		sort.rand(10);
+		sort.print();
+		sort.mergeSort();
+		sort.print();
+	}
 }
