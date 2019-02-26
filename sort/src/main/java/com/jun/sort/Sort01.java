@@ -88,9 +88,41 @@ public class Sort01{
 		
 	}
 
+	/**
+	 * 归并排序
+	 */
+
 	public void mergeSort(){
 		mergeS(a, 0, a.length-1);
 
+	}
+
+	/**
+	 * 计数排序
+	 */
+	public void countSort(){
+		int max = 0;
+		for(int i = 0; i <a.length; i++){
+			if(a[i]>max){
+				max = a[i];
+			}
+		}
+		int[] temp = new int[a.length];
+		int[] count = new int[max+1];
+		for(int i = 0;i <a.length;i++){
+			count[a[i]]+=1;
+		}
+		for(int i = 1;i <= max;i++){
+			count[i] += count[i-1];
+		}
+		for(int i = 0; i<a.length;i++){
+			int index = count[a[i]]-1;
+			temp[index] = a[i];
+			count[a[i]]--;
+		}
+		for(int i = 0;i<a.length;i++){
+			a[i] = temp[i];
+		}
 	}
 	private void mergeS(int[] a, int low, int high){
 		if(low >= high){

@@ -69,4 +69,11 @@ public class SortTest extends TestCase{
 		sort.mergeSort();
 		sort.print();
 	}
+	public void testCount(){
+	    Sort01 sort = new Sort01();
+	    sort.rand(20);
+	    sort.print();
+	    sort.countSort();
+	    sort.print();
+    }
 }
