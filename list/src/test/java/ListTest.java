@@ -209,5 +209,15 @@ public class ListTest extends TestCase {
 
         }
     }
+    public void testTwoWay(){
+        TwoWayLinkedList twl = new TwoWayLinkedList();
+        twl.add(1);
+        twl.insert(0,2);
+        twl.insert(1,3);
+        twl.delete(3);
+        twl.insert(1,5);
+        twl.add(6);
+        twl.display();
+    }
 }
 
