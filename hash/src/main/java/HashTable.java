@@ -1,5 +1,5 @@
 public class HashTable {
-    private int capacity = 10;
+    private int capacity = 11;
     private final double rate = 0.75;
     private int[] item;
     private int size;

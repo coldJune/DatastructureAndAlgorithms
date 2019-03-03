@@ -48,6 +48,9 @@ public class TwoWayLinkedList {
         }
     }
 
+    public boolean isEmpty(){
+        return size == 0 ? true:false;
+    }
     public void display(){
         Node2 temp = head.next;
         while(temp !=tail && temp.next != tail){

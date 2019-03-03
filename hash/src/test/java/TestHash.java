@@ -19,4 +19,19 @@ public class TestHash extends TestCase {
         ht.print();
 
     }
+    public void testLinkedHashTable(){
+        LinkedHashTable lht = new LinkedHashTable();
+        int[] items = new int[20];
+        for(int i = 0; i< 20; i++){
+            int item = (int)(Math.random() * 20 + 1);
+            lht.insert(item);
+            items[i] = item;
+        }
+        lht.display();
+        System.out.println("-------");
+        for(int i = 0; i < 10; i++){
+            lht.delete(items[i]);
+        }
+        lht.display();
+    }
 }
