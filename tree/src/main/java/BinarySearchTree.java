@@ -36,6 +36,35 @@ public class BinarySearchTree {
         }
     }
 
+    public void delete(Object data){
+        Node temp = root;
+        while(temp != null && (int)temp.data != (int)data){
+            if((int)data > (int)temp.data){
+                temp = temp.right;
+            }else{
+                temp = temp.right;
+            }
+        }
+        if(temp == null) return;
+        if(temp.left != null && temp.right != null){
+            Node minTemp = temp.right;
+            while(minTemp.left != null){
+                minTemp = minTemp.left;
+            }
+            temp.data = minTemp.data;
+            temp = minTemp;
+        }
+        Node child;
+        if(temp.left != null) child = temp.left;
+        else if(temp.right != null) child = temp.right;
+        else child = null;
+
+        if(temp.parent == null) root=child;
+        else if(temp.parent.left == temp) temp.parent.left = child;
+        else temp.parent.right = child;
+
+
+    }
     public void pre(Node root){
         if(root==null){
             return;
