@@ -17,4 +17,18 @@ public class TestHeap extends TestCase {
             System.out.print(mth.deleteTop() + " ");
         }
     }
+
+    public void testMinHeap(){
+        MinTopHeap mth = new MinTopHeap();
+        for(int i = 0; i < 5;i++){
+            int rand = (int)(Math.random() * 100);
+            mth.insert(rand);
+        }
+        mth.print();
+        System.out.println(mth.getTop());
+        for(int i = 0 ; i< 5; i++){
+            System.out.print(mth.deleteTop() + " ");
+        }
+        mth.print();
+    }
 }
