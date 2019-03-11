@@ -42,4 +42,8 @@ public class CircleQueue {
         }
         System.out.println();
     }
+
+    public boolean isEmpty(){
+        return this.size == 0 ? true : false;
+    }
 }
