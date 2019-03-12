@@ -14,6 +14,8 @@ public class TestGraph extends TestCase {
         lg.addEdge(3,4);
         lg.addEdge(2,4);
         lg.display();
-        lg.dfs(0,4);
+        lg.bfs(0,3);
+        System.out.println();
+        lg.dfs(0,3);
     }
 }
