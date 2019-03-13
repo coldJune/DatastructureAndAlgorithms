@@ -18,4 +18,18 @@ public class TestGraph extends TestCase {
         System.out.println();
         lg.dfs(0,3);
     }
+
+    public void testMatrixGraph(){
+        MatrixGraph mg = new MatrixGraph(5);
+        mg.addEdge(0,1);
+        mg.addEdge(0,2);
+        mg.addEdge(1,2);
+        mg.addEdge(2,3);
+        mg.addEdge(3,4);
+        mg.addEdge(2,4);
+        mg.display();
+        mg.bfs(0,3);
+        System.out.println();
+        mg.dfs(0,3);
+    }
 }
