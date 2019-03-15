@@ -29,6 +29,12 @@ class LinkedList:
     def __unlink(self, node):
         node.prev.next = node.next
         node.next.pre = node.prev
+        if node == self.last:
+            self.last = self.last.prev
+        if node == self.first:
+            self.first = self.first.next
+        if node == self.first == self.last:
+            self.first = self.last = None
 
     def add(self, item):
         p = Node(self.last, item, self.tail)
@@ -62,4 +68,34 @@ class LinkedList:
         self.size -= 1
 
     def insert(self, index, item):
-        
+        if index < 0 or index > self.size:
+            return
+        p = self.first
+        for i in range(index):
+            p = p.next
+        n = Node(p.prev, item, p)
+        if p == self.first:
+            self.head.next = n
+            p.prev = n
+            self.first = n
+        if p == self.tail:
+            self.tail.pre.next = n
+            self.tail.pre = n
+            self.last = n
+        self.size += 1
+
+    def get(self, index):
+        if index < 0 or index >= self.size:
+            return None
+        p = self.first
+        for i in range(index):
+            p = p.next
+        return p.item
+
+    def display(self):
+        p = self.first
+        while p != self.tail:
+            print(p.item, end="->")
+            p = p.next
+        print()
+
