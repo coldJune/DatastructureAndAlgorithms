@@ -79,6 +79,27 @@ class Sort:
         #     i += 1
         a[start:end+1] = temp
 
+    def quick(self):
+        self.__quick_c(self.__a, 0, self.__n - 1)
+
+    def __quick_c(self, a, start, end):
+        if start >= end:
+            return
+        p = self.__partition(a, start, end)
+        self.__quick_c(a, start, p-1)
+        self.__quick_c(a, p+1, end)
+
+    def __partition(self, a, start, end):
+        pivot = a[end]
+        i = j = start
+        while j < end:
+            if a[j] < pivot:
+                a[i], a[j] = a[j], a[i]
+                i += 1
+            j += 1
+        a[i], a[end] = a[end], a[i]
+        return i
+
     def display(self):
         print(self.__a)
 
@@ -106,5 +127,11 @@ if __name__ == '__main__':
     sort = Sort([i * random.randint(1, 100) for i in range(10)], 10)
     sort.display()
     sort.merge_sort()
+    print()
+    sort.display()
+    print('---------快排-------')
+    sort = Sort([i * random.randint(1, 100) for i in range(10)], 10)
+    sort.display()
+    sort.quick()
     print()
     sort.display()
