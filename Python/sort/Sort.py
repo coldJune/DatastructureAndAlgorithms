@@ -100,6 +100,35 @@ class Sort:
         a[i], a[end] = a[end], a[i]
         return i
 
+    def count_sort(self):
+        ma = -999999999999
+        mi = 999999999999
+        for i in self.__a:
+            plus = 0
+            if i > ma:
+                ma = i
+            if i < mi:
+                mi = i
+        if mi < 0:
+            self.__a = [i-mi for i in self.__a]
+            ma = ma - mi
+            plus = -mi
+        count = [0]*(ma+1)
+        for i in self.__a:
+            count[i] += 1
+        for i in range(1, ma+1):
+            count[i] += count[i-1]
+        i = 0
+        temp = [0]*self.__n
+        while i < self.__n:
+            index = count[self.__a[i]]-1
+            temp[index] = self.__a[i]
+            count[self.__a[i]] -= 1
+            i += 1
+        self.__a = [i - plus for i in temp]
+
+
+
     def display(self):
         print(self.__a)
 
@@ -123,15 +152,21 @@ if __name__ == '__main__':
     # sort.selection()
     # print()
     # sort.display()
-    print('---------归并-------')
-    sort = Sort([i * random.randint(1, 100) for i in range(10)], 10)
+    # print('---------归并-------')
+    # sort = Sort([i * random.randint(1, 100) for i in range(10)], 10)
+    # sort.display()
+    # sort.merge_sort()
+    # print()
+    # sort.display()
+    # print('---------快排-------')
+    # sort = Sort([i * random.randint(1, 100) for i in range(10)], 10)
+    # sort.display()
+    # sort.quick()
+    # print()
+    # sort.display()
+    print('---------计数-------')
+    sort = Sort([i * random.randint(-100, 100) for i in range(10)], 10)
     sort.display()
-    sort.merge_sort()
-    print()
-    sort.display()
-    print('---------快排-------')
-    sort = Sort([i * random.randint(1, 100) for i in range(10)], 10)
-    sort.display()
-    sort.quick()
+    sort.count_sort()
     print()
     sort.display()
